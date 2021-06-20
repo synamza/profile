@@ -195,7 +195,7 @@ sap.ui.define([
 					if(oEmpJobNew[j].employeeClassNav) {
 						if(oEmpJobNew[j].employeeClassNav.picklistLabels) sEmployeeType = oEmpJobNew[j].employeeClassNav.picklistLabels.results;
 					}
-					if(EmpJobNew[j].customString2Nav) {
+					if(oEmpJobNew[j].customString2Nav) {
 						if(oEmpJobNew[j].customString2Nav.picklistLabels) sJobGroup = oEmpJobNew[j].customString2Nav.picklistLabels.results;
 					}
 					if(oEmpJobNew[j].departmentNav) sOrgUnit = oEmpJobNew[j].departmentNav.name_en_US;
