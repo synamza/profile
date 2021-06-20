@@ -1,0 +1,234 @@
+.sapFShellBar {
+	background:#ffffff !important;
+	    box-shadow: inset 0 -0.0625rem 0 0 #ffffff !important;
+}
+
+.sapUiTableHeaderDataCell>.sapUiTableCellInner>div:first-child>*  {
+    margin: 0 auto ;
+}
+
+#renderTopNavFixedWidthV12 {
+    height: 39px !important;
+}
+
+@media (min-width: 80rem)
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+}
+
+.sapMShellGlobalOuterBackground,
+.sapMShellCentralBox { background-color: #f7f7f7 !important;}
+html.sap-desktop ::-webkit-scrollbar-thumb { background-color: #446690 !important; }
+/* Shell width 값 고정 */
+.sapMShellContent { width: 1000px !important; min-width: 1000px !important; }
+#application-Home-show-component---View--page { background-color: white !important; }
+#container-EmpCard---View1--page-cont  { overflow: hidden !important; }
+#container-EmpCard---View1--empinfobox { overflow: auto; width: 100%; height: calc(100% - 68px); }
+#container-EmpCard---View1--headerbox #__hbox1 {
+    padding-bottom: 10px;
+    border-bottom: 4px solid #f7f7f7;
+}
+
+.sapMBtnInner{
+    height: 2.25rem !important;
+    min-width: 2.25rem !important;
+}
+.sapMBtnContent{
+	line-height: 2.125rem !important;
+}
+
+/* Panel 밑줄제거 */
+.sapMPanelContent:not(.sapMPanelBGTransparent) {border-bottom: .0625rem solid white !important;}
+    
+/* 페이지 배경색 */
+.main {background-color: white; }
+
+/* 페이지 안에 세부 크기 관련 css 정리 */
+.boxheight {overflow-y: hidden;}
+
+
+/* 헤더 간격 */
+.header_area {padding: 10px 5px 0px 10px;}
+
+/* 헤더 버튼 간격 */
+.header_btn { padding-right: 5px !important; }
+
+/* 헤더 프린트 버튼 */
+.savepdf { font-size: .8rem; line-height: 54px; padding-right: 5px;}
+
+/* 로고 */
+/*.logo_image { background-color: #354a5f; padding: 5px;}*/
+.logo_image {}
+.logo_image_panel > div {padding: 0 0 0 17px;}
+
+
+/* 테이블 */
+.emp_table { font-size: .8rem; width: 100%; padding: 0px; border-spacing: 0px; margin: 0px; }
+.emp_table tr th { background-color: #ececec; height:22px; border-left: 1px solid #8a8a8a; border-top: 1px solid #8a8a8a; text-align: center; font-weight: normal; word-break:break-all}
+.emp_table tr td { height:22px; border-left: 1px solid #8a8a8a; border-top: 1px solid #8a8a8a; text-align: center; font-weight: normal; word-break:break-all}
+.emp_table tr th:last-child,
+.emp_table tr td:last-child { border-right: 1px solid #8a8a8a; }
+.emp_table tr:last-child th,
+.emp_table tr:last-child td { border-bottom: 1px solid #8a8a8a; } 
+
+.align_left   { text-align: left !important; padding-left:.3rem; }
+.align_center { text-align: center !important; }
+.align_right  { text-align: right !important; padding-right:.3rem; }
+
+/* width 비율별 css 정의 */
+.w10 { width: 10%; }
+.w11 { width: 11%; }
+.w15 { width: 15%; }
+.w16 { width: calc(100%/6); min-width: 50px;}
+.w18 { width: 18%;}
+.w22 { width: 22%; }
+.w25 { width: 25%; }
+.w33 { width: calc(100%/3); min-width: 50px;}
+.w50 { width: 50%; }
+.w100{ width: 100%; }
+
+
+.windowmargin { width: 100%; padding-top: 10px; }
+.windowmargin .sapUiHLayoutChildWrapper { width: 100%; }
+.title {font-size:.9rem; height: 1.5rem; font-weight: bold;}
+
+
+/*.sapMShellCentralBox { width :800px;  margin-left: -400px;}*/
+.overflowh { overflow: hidden; }
+.overflowh .sapMPanelContent { overflow: hidden; }
+.paddingLeft0 div{ padding-left: 0px; }
+
+.top_title { font-size: 32px !important; font-weight: bold; letter-spacing: 18px; text-align: center !important; width: 100%; }
+/*.image { width: 90px; height: 120px; margin-right: 10px; border: 1px solid gray !important; }*/
+.image { width: 110px; height: 146px; margin-right: 5px; border: 1px solid #8a8a8a !important; }
+
+ /* 사진 박스 */
+/*.empbox { border: 1px solid black; border-radius: 10px; padding: 10px; height: 170px;}*/
+.emptxt { font-size: .8rem; padding-top: 2px; }
+.emptxt2 { font-size: .8rem; }
+
+.emp2_list { font-size: .8rem; line-height: 1.2rem;}
+.emp2_ul { padding: 0px; margin: 0px; list-style:none; }
+
+.childPrintBox {padding: 20px;}
+.photoBottomTxt {letter-spacing: 0.8em; font-weight: bold; font-size: 1.1rem;}
+
+.areaicon {font-family: "SAP\2dicons";}
+.area4icon {font-family: "SAP\2dicons"; float:right; padding-right:.3rem;}
+.rowEdit_list {font-size: .8rem; line-height: 1.6rem;}
+.rowEdit_ul {padding: 0px; margin: 0px; padding-left: 1rem;}
+#rowEdit {padding: 1rem 1rem 0 1rem;}
+
+.sapUiSizeCompact.sapMDialog>footer, .sapUiSizeCompact .sapMDialog>footer {
+    height: 3.5rem !important;
+}
+
+.sapUiSizeCompact.sapMDialog>footer .sapMFooter-CTX, .sapUiSizeCompact .sapMDialog>footer .sapMFooter-CTX {
+    height: 3.5rem !important;
+}
+
+.area2pad0 .sapMPanelContent{
+	padding-bottom: 0 !important;
+}
+
+.areaDetail{
+	margin: 0px;
+	line-height:1.3rem;
+	list-style-type : none;
+}
+.areaDetail li{
+	padding-left: 0.8em;
+	font-size: .875rem;
+}
+.areaDetail li:before{
+	content: "\2022";
+	display: inline-block;
+	margin-left: -0.8em;	/* same as padding-left set on li */
+	width: 0.8em;			/* same as padding-left set on li */
+}
+.areaDetailSubTitle{
+	font-size: .875rem;
+}
+.paddingLeft16{
+	padding-left: 16px;
+}
+.marginTop10 {
+	margin-top: 10px;	
+}
+.marginTop20 {
+	margin-top: 20px;	
+}
+.marginTop30 {
+	margin-top: 30px;	
+}
+.areaTitle{
+	width:100%;
+	background-color: #ececec !important;
+	color: black !important;
+	padding: 0.4rem 1rem;
+	/*text-align: center;*/
+}
+.areaDetailTitle{
+	margin-top: .875rem;	
+}
+.fontBold{
+	font-weight: bold;	
+}
+
+.MainFont{
+	font-size: 22px;
+    font-weight: bold;
+}
+.infoTitle{
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.userName{
+    margin-left: 10px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.sapFCard .sapFCardHeader{
+	padding: 0rem !important;
+    padding-left: 14px !important;
+    padding-top: 4px !important;
+}
+
+.empMargin2 {
+	margin-top: 2px;
+}
+.empMarginBT2 {
+	margin-bottom: 1px;
+}
+.empMarginLT10 {
+	margin-left: 10px;
+}
+.empMarginTop3 {
+	margin-top: 3px;
+}
+.empMarginTop4 {
+	margin-top: 4px;
+}
+.empMarginTop5 {
+	margin-top: 5px;
+}
+.empMarginTop6 {
+	margin-top: 6px;
+}
+.empMarginCall {
+	margin-bottom: 6px;
+    margin-left: 28px;
+}
+
+.sapUiSizeCompact .sapMBtnIcon {
+    line-height: 2rem;
+    width: 1.000rem;
+    font-size: 1.000rem;
+    max-height: 1.500rem;
+}
+  

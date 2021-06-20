@@ -1,0 +1,302 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:ux="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="solus.empinfocard.controller.empInfoCardMain" xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" xmlns:l="sap.ui.layout"
+	xmlns:card="sap.f.cards" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt" height="100%" displayBlock="true">
+	<tnt:ToolPage id="toolPage">
+		<tnt:mainContents>
+			<NavContainer id="pageContainer">
+				<pages>
+					<Page id="page" showHeader="true" class="main">
+						<headerContent>
+							<OverflowToolbar>
+								<Button icon="sap-icon://search" press="handleDialogPress" class="header_btn" text="{i18n>search}"/>
+								<Button icon="sap-icon://pdf-attachment" press="printPDF" class="header_btn" text="PDF"/>
+							</OverflowToolbar>
+						</headerContent>
+						<VBox></VBox>
+						<VBox class="printbox" id="empinfobox" items="{/empInfos}">
+							<VBox class="childPrintBox">
+								<HBox height="65px">
+									<VBox width="12%" alignItems="Center" justifyContent="Center">
+										<Image src="{logo}" width="97px"/>
+									</VBox>
+									<VBox width="73%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<Text text="Employee Profile" class="MainFont"/>
+									</VBox>
+								</HBox>
+								<Toolbar width="100%" height="1px"/>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%">
+										<HBox>
+											<VBox width="14%">
+												<Image src="{img}" width="120px" height="130px"/>
+											</VBox>
+											<VBox width="3%"></VBox>
+											<VBox width="83%">
+												<HBox alignContent="Start" alignItems="Start" justifyContent="Start">
+													<Text text="{firstName}" class="userName"/>
+													<Text text="({lastName})" class="userName"/>
+												</HBox>
+												<Toolbar width="100%" height="1px"/>
+												<HBox alignContent="Start" alignItems="Start" justifyContent="Start" class="empMarginTop6">
+													<VBox alignContent="Start" alignItems="Start" justifyContent="Start" width="{vWidth1}">
+														<Text text="{lL1}" class="empMarginLT10"/>
+														<Text text="{lL2}" class="empMarginLT10"/>
+														<Text text="{lL3}" class="empMarginLT10"/>
+														<Text text="{lL4}" class="empMarginLT10"/>
+														<Text text="{lL5}" class="empMarginLT10"/>
+													</VBox>
+													<VBox alignContent="Start" alignItems="Start" justifyContent="Start" width="{vWidth2}">
+														<Text text="{i18n>tenurewithinCompany} : {lR1}"/>
+														<Text text="{i18n>totalTenure} : {lR2}"/>
+														<Text text="{i18n>tenurewithinOrgUnit} : {lR3}"/>
+														<Text text="{i18n>tenureinTitle} : {lR4}"/>
+													</VBox>
+												</HBox>
+											</VBox>
+										</HBox>
+									</VBox>
+								</HBox>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%"><Title level="H3" text="{i18n>career}" class="areaTitle"/></VBox>
+								</HBox>
+								<HBox>
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%">
+										<Table items="{ path: 'careerSet', sorter: { path: 'beginDate' }, templateShareable:false }" noDataText="{i18n>noData1}">
+											<columns>
+												<Column width="130px">
+													<Text text="{i18n>beginDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="130px">
+													<Text text="{i18n>endDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="160px">
+													<Text text="{i18n>company}"/>
+												</Column>
+												<Column hAlign="Begin" width="160px">
+													<Text text="{i18n>department}"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="{i18n>callingTitle}"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="{i18n>job}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Text text="{ path: 'startDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' }}"/>
+														<Text text="{ path: 'endDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' }}"/>
+														<Text text="{cust_employer}"/>
+														<Text text="{cust_department}"/>
+														<Text text="{cust_positionGroup}"/>
+														<Text text="{cust_jobCodeNav/results/0/name_localized}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</HBox>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%"><Title level="H3" text="{i18n>education}" class="areaTitle"/></VBox>
+								</HBox>
+								<HBox>
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%">
+										<Table items="{ path: 'educationSet', sorter: { path: 'beginDate' }, templateShareable:false }" noDataText="{i18n>noData2}">
+											<columns>
+												<Column width="130px">
+													<Text text="{i18n>beginDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="130px">
+													<Text text="{i18n>endDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="160px">
+													<Text text="{i18n>schoolName}"/>
+												</Column>
+												<Column hAlign="Begin" width="160px">
+													<Text text="{i18n>certificate}"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="{i18n>country}"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="{i18n>major}"/>
+												</Column>
+												<Column hAlign="Begin">
+													<Text text="{i18n>minor}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Text text="{ path: 'startDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' }}"/>
+														<Text text="{ path: 'cust_EndDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' }}"/>
+														<Text text="{cust_Institute/externalName}"/>
+														<VBox>
+															<Text text="{cust_CertificateNav/results/0/label_ko_KR}" visible="{= ${UserLang} === 'ko' ? true:false}"/>
+															<Text text="{cust_CertificateNav/results/0/label_zh_CN}" visible="{= ${UserLang} === 'zh' ? true:false}"/>
+															<Text text="{cust_CertificateNav/results/0/label_en_US}" visible="{= ${UserLang} === 'en' ? true:false}"/>
+														</VBox>
+														<VBox>
+															<Text text="{cust_Institute/cust_countryNav/results/0/label_ko_KR}" visible="{= ${UserLang} === 'ko' ? true:false}"/>
+															<Text text="{cust_Institute/cust_countryNav/results/0/label_zh_CN}" visible="{= ${UserLang} === 'zh' ? true:false}"/>
+															<Text text="{cust_Institute/cust_countryNav/results/0/label_en_US}" visible="{= ${UserLang} === 'en' ? true:false}"/>
+														</VBox>
+														<VBox>
+															<Text text="{cust_majorNav/results/0/label_ko_KR}" visible="{= ${UserLang} === 'ko' ? true:false}"/>
+															<Text text="{cust_majorNav/results/0/label_zh_CN}" visible="{= ${UserLang} === 'zh' ? true:false}"/>
+															<Text text="{cust_majorNav/results/0/label_en_US}" visible="{= ${UserLang} === 'en' ? true:false}"/>
+														</VBox>
+														<VBox>
+															<Text text="{cust_submajorNav/results/0/label_ko_KR}" visible="{= ${UserLang} === 'ko' ? true:false}"/>
+															<Text text="{cust_submajorNav/results/0/label_zh_CN}" visible="{= ${UserLang} === 'zh' ? true:false}"/>
+															<Text text="{cust_submajorNav/results/0/label_en_US}" visible="{= ${UserLang} === 'en' ? true:false}"/>
+														</VBox>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</HBox>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%"><Title level="H3" text="{i18n>personalContact/Address}" class="areaTitle"/></VBox>
+								</HBox>
+								<HBox class="empMargin2">
+									<VBox width="1.6%"></VBox>
+									<HBox width="98.4%">
+										<VBox width="48%">
+											<Text text="{i18n>contact}" class="infoTitle empMarginBT2"/>
+											<Toolbar width="100%" height="1px"/>
+											<HBox class="empMarginTop6 empMarginCall">
+												<Label text="{i18n>workPhone} :"/>
+												<Text text="{businessPhone}" class="empMarginLT10"/>
+											</HBox>
+											<HBox class="empMarginCall">
+												<Label text="{i18n>mobilePhone} :"/>
+												<Text text="{cellPhone}" class="empMarginLT10"/>
+											</HBox>
+											<HBox class="empMarginCall">
+												<Label text="{i18n>homeTelNumber} :"/>
+												<Text text="{homePhone}" class="empMarginLT10"/>
+											</HBox>
+										</VBox>
+										<VBox width="4%"></VBox>
+										<VBox width="48%">
+											<Text text="{i18n>address}" class="infoTitle empMarginBT2"/>
+											<Toolbar width="100%" height="1px"/>
+											<VBox class="empMarginTop6 empMarginCall">
+												<Label text="{i18n>permanentResidence} :"/>
+												<Text text="{address}" class="empMarginLT10"/>
+											</VBox>
+										</VBox>
+									</HBox>
+								</HBox>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%"><Title level="H3" text="{i18n>familyInfomation}" class="areaTitle"/></VBox>
+								</HBox>
+								<HBox>
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%">
+										<Table items="{ path: 'familyInfoSet', sorter: { path: 'relationship' }, templateShareable:false }" noDataText="{i18n>noData3}">
+											<columns>
+												<Column width="17%">
+													<Text text="{i18n>relationship}"/>
+												</Column>
+												<Column hAlign="Begin" width="18%">
+													<Text text="{i18n>name}"/>
+												</Column>
+												<Column hAlign="Begin" width="18%">
+													<Text text="{i18n>birthDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="13%">
+													<Text text="{i18n>age}"/>
+												</Column>
+												<Column hAlign="Begin" width="15%">
+													<Text text="{i18n>gender}"/>
+												</Column>
+												<!--<Column hAlign="Begin" width="20%">-->
+												<!--	<Text text="{i18n>occupation/Workplace}"/>-->
+												<!--</Column>-->
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Text text="{relationship}"/>
+														<Text text="{name}"/>
+														<Text text="{birthDate}"/>
+														<Text text="{age}"/>
+														<Text text="{gender}"/>
+														<!--<Text text="{6}"/>-->
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</HBox>
+								<HBox class="sapUiSmallMarginTop">
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%"><Title level="H5" text="{i18n>actionHistory(Summary)}" class="areaTitle"/></VBox>
+								</HBox>
+								<HBox>
+									<VBox width="1.6%"></VBox>
+									<VBox width="98.4%">
+										<Table items="{ path: 'IssuanceHistorySet', sorter: { path: 'actionDate', descending: true }, templateShareable:false }"
+											noDataText="{i18n>noData4}">
+											<columns>
+												<Column width="11%">
+													<Text text="{i18n>actionDate}"/>
+												</Column>
+												<Column hAlign="Begin" width="11%">
+													<Text text="{i18n>actionReason}"/>
+												</Column>
+												<Column hAlign="Begin" width="11%">
+													<Text text="{i18n>department}"/>
+												</Column>
+												<Column hAlign="Begin" width="14%">
+													<Text text="{i18n>employeeGroup}"/>
+												</Column>
+												<Column hAlign="Begin" width="10%">
+													<Text text="{i18n>jobGroup}"/>
+												</Column>
+												<Column hAlign="Begin" width="10%">
+													<Text text="{i18n>title/Role}"/>
+												</Column>
+												<Column hAlign="Begin" width="10%">
+													<Text text="{i18n>sjp}"/>
+												</Column>
+												<Column hAlign="Begin" width="11%">
+													<Text text="{i18n>company}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Text text="{actionDate}"/>
+														<Text text="{reason}"/>
+														<Text text="{orgUnit}"/>
+														<Text text="{employeeType}"/>
+														<Text text="{jobGroup}"/>
+														<Text text="{position}"/>
+														<Text text="{sjf}"/>
+														<Text text="{company}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</HBox>
+							</VBox>
+						</VBox>
+					</Page>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

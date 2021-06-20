@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+	xmlns="sap.m" class="sapUiSizeCompact"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		contentWidth="800px"
+		contentHeight="50%" 
+		title="{i18n>search}"
+		noDataText="{i18n>noData5}"
+		class="sapUiPopupWithPadding sapUiSizeCompact"
+		items="{user>/ProductCollection}"
+		search="_handleValueHelpSearch"
+		liveChange="_handleValueLiveChange"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<ColumnListItem>
+			<cells>
+				<Text text="{user>firstName}" />
+				<Text text="{user>custom05}" />
+				<Text text="{user>custom03}" />
+				<Text text="{user>department}" />
+				<Text text="{user>division}" />
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="7rem">
+				<header>
+					<Text text="{i18n>name}" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<header>
+					<Text text="{i18n>Role}" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" >
+				<header>
+					<Text text="{i18n>FullTime}" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" >
+				<header>
+					<Text text="{i18n>Team}" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<header>
+					<Text text="{i18n>Part}" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,7 @@
+<mvc:View controllerName="solus.empinfocard.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell" appWidthLimited="false">
+		<App id="appControl">
+			
+		</App>
+	</Shell>
+</mvc:View>

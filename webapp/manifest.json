@@ -1,0 +1,107 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "solus.empinfocard",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "solus.empinfocard.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "solus.empinfocard.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}],
+			"js": [{
+				"uri": "js/html2canvas.min.js"
+			}, {
+				"uri": "js/jspdf.min.js"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "solus.empinfocard.view",
+				"controlAggregation": "pages",
+				"controlId": "appControl",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "TargetApp",
+				"pattern": "RouteApp",
+				"target": ["TargetApp"]
+			}, {
+				"name": "empInfoCardMain",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["empInfoCardMain"]
+			}],
+			"targets": {
+				"TargetApp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "App",
+					"viewName": "App"
+				},
+				"empInfoCardMain": {
+					"viewType": "XML",
+					"viewName": "empInfoCardMain"
+				}
+			}
+		}
+	}
+}
