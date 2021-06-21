@@ -41,7 +41,7 @@ sap.ui.define([
 			(async() => {
 				this.busyDialog.open();
 				let oViewModel = this.getView().getModel();
-				let oEmpData = await this.setAddInfo("1528458");
+				let oEmpData = await this.setAddInfo("1528458", "2643871");
 				oViewModel.setProperty("/empInfos", [oEmpData]);
 				this.busyDialog.close();
 			})();
@@ -51,43 +51,44 @@ sap.ui.define([
 		 * User에 따른 정보를 불러와 ViewData를 생성한다.
 		 * UserId : 유저정보
 		 */ 
-		setAddInfo: async function (UserId) {
+		setAddInfo: async function (personIdExternal, UserId) {
 			return new Promise((resolve, reject) => {
 				const oViewModel = this.getView().getModel();
 				// const oEmpInfos = oViewModel.getProperty("/empInfos");
 				const photoPath = jQuery.sap.getModulePath("solus.empinfocard") + "/image/"; //이미지경로
+				const sPersonIdExternal = personIdExternal; 
 				const sUserID = UserId; 
 				const sUserLang = navigator.language || navigator.userLanguage;
 				(async() => {
-					const sPhotoPath = await this.getPhoto(sUserID);			 //사진정보
 					const sLogoPath = photoPath+"Logo_solus.jpg";				 //로고
-					const oUserInfo = await this.getUser(sUserID);				 //유저정보 
-					const oEmployeeClass = await this.getEmployeeClass(sUserID); //경력사항 
-					const oEducation = await this.getEducation(sUserID);		 //학력정보 
-					const oFamilyInfo = await this.getFamilyInfo(sUserID);		 //가족사항
+					const oUserInfo = await this.getUser(sPersonIdExternal);				 //유저정보 
+					const oEmployeeClass = await this.getEmployeeClass(sPersonIdExternal); //경력사항 
+					const oEducation = await this.getEducation(sPersonIdExternal);		 //학력정보 
+					const oFamilyInfo = await this.getFamilyInfo(sPersonIdExternal);		 //가족사항
 					let oEmpJobNew = "";										 //발령사항
-					let oEmpJobOld = await this.getEmpJobOLD(sUserID);			 //이전발령사항
+					let oEmpJobOld = await this.getEmpJobOLD(sPersonIdExternal);			 //이전발령사항
 					let sVBox1 = "60%";
 					let sVBox2 = "40%";
 					switch (sUserLang) { //접속Language에 따라 가족사항 호출
 						case 'en':
-							oEmpJobNew = await this.getEmpJobUS(sUserID);
+							oEmpJobNew = await this.getEmpJobUS(sPersonIdExternal);
 							sVBox1 = "50%";
 							sVBox2 = "50%";
 							break;
 						case 'zh':
-							oEmpJobNew = await this.getEmpJobCN(sUserID);
+							oEmpJobNew = await this.getEmpJobCN(sPersonIdExternal);
 							break;
 						default:
-							oEmpJobNew = await this.getEmpJobKR(sUserID);
+							oEmpJobNew = await this.getEmpJobKR(sPersonIdExternal);
 							break;
 					}
 					const oEmpJob = await this.setEmpJob(oEmpJobOld, oEmpJobNew, sUserLang); //현재 + 이전(발령사항을 합친다)
 					let sGender = "", sFirstName = "", sLastName = "", sLL1 = "", sLL2 = "", sLL3 = "", sLL4 = "", sLL5 = "", sLR1 = "", 
-					    sLR2 = "", sLR3 = "", sLR4 = "", sBusinessPhone = "", sCellPhone = "", sHomePhone = "", sAddress = "";
+					    sLR2 = "", sLR3 = "", sLR4 = "", sBusinessPhone = "", sCellPhone = "", sHomePhone = "", sAddress = "", sOriginGender="";
 					    
 					if (oUserInfo) { // 유저정보 있을경우 Make Data
 						sGender = this.checkGender(oUserInfo.gender);
+						sOriginGender = oUserInfo.gender;
 						sFirstName = oUserInfo.firstName;
 						sLastName = oUserInfo.lastName;
 						sLL1 = oUserInfo.jobCode;
@@ -104,7 +105,8 @@ sap.ui.define([
 						sHomePhone = oUserInfo.homePhone,
 						sAddress = "("+oUserInfo.addressLine1+") "+oUserInfo.state+" "+oUserInfo.addressLine2+" "+oUserInfo.addressLine3;
 					}
-					
+					const sPhotoPath = await this.getPhoto(sUserID, sOriginGender);			 //사진정보
+					// const sPhotoPath = await this.getPhoto(sUserID, sOriginGender);			 //사진정보
 					let oCareerSet = [];
 					if (oEmployeeClass && oEmployeeClass.length) { //경력사항 있을경우 Make Data
 						 oCareerSet = oEmployeeClass;
@@ -381,7 +383,7 @@ sap.ui.define([
 					this.busyDialog.open();
 					oViewModel.setProperty("/empInfos", null);
 					for (let i = 0; i < returnVal.length; i++) {
-						let oEmpData = await this.setAddInfo(returnVal[i].personIdExternal)
+						let oEmpData = await this.setAddInfo(returnVal[i].personIdExternal, user)
 						if (i === 0) {
 							oViewModel.setProperty("/empInfos", [oEmpData]);
 							this.busyDialog.close();
@@ -475,10 +477,12 @@ sap.ui.define([
 		
 		/**
 		 * 사진정보 가져오기 
-		 */
-		getPhoto: function (user) {
+		 */ 
+		getPhoto: function (user, sOriginGender) {
 			return new Promise((resolve, reject) => {
-				let sPhotoPath = jQuery.sap.getModulePath("solus.empinfocard") + "/image/" + "photoNotAvailable.gif";
+				let sPhotoPath = jQuery.sap.getModulePath("solus.empinfocard") + "/image/" + "Male.jpg";
+				if (sOriginGender === "F") sPhotoPath = jQuery.sap.getModulePath("solus.empinfocard") + "/image/" + "Female.jpg";
+				
 				let oModel = this.getOwnerComponent().getModel("SFModel");
 				let oViewModel = this.getView().getModel();
 				let InputFilter = new sap.ui.model.Filter({

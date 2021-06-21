@@ -29,7 +29,8 @@
 									<VBox width="98.4%">
 										<HBox>
 											<VBox width="14%">
-												<Image src="{img}" width="120px" height="130px"/>
+												<Image src="{img}" width="120px"/>
+												 <!--width="120px" height="130px"-->
 											</VBox>
 											<VBox width="3%"></VBox>
 											<VBox width="83%">
